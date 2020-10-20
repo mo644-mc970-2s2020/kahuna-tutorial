@@ -125,85 +125,10 @@ Used to show the status of batch jobs. Some usages:
 
 ## Examples
 
-### Using a GPU node
-
-Compiling the code:
-
-```sh
-module load compiler/gcc-7.4.0
-module load cuda/cuda-10.1
-
-nvcc source.cu
-```
-
-Job file:
-
-```sh
-#PBS -q route 
-#PBS -N awave-mpi-job 
-#PBS -o awave-job-test.out
-#PBS -e awave-job-test.err
-#PBS -V
-#PBS -l select=1:ncpus=8:ngpus=1:Qlist=Qlist=GPUK20
-#PBS -l place=scatter
-#PBS -l walltime=00:00:15
-#!/bin/sh
-
-# cd to job directory
-cd $PBS_O_WORKDIR
-
-# start job log
-echo "Job started!" > job_log.txt
-
-# program loading and env configuration
-. $HOME/.bashrc
-source /etc/profile.d/modules.sh
-
-module load compiler/gcc-7.4.0
-module load cuda/cuda-10.1
-
-./a.out
-```
-
-### MPI Hello World
-
-Compiling the MPI application:
-
-```sh
-$ module purge
-$ module load mpich/mpich2-1.4.1
-
-$ mpicc hello-mpi.c -o hello-mpi
-```
-
-Job file:
-
-```sh
-#PBS -q route 
-#PBS -N mpi-job 
-#PBS -o job-test.out
-#PBS -e job-test.err
-#PBS -V
-#PBS -l select=4:ncpus=1:ngpus=0:Qlist=Compute
-#PBS -l place=scatter
-#PBS -l walltime=1:00:00
-#!/bin/sh
-
-# cd to job directory
-cd $PBS_O_WORKDIR
-
-# program loading and env configuration
-. $HOME/.bashrc
-source /etc/profile.d/modules.sh
-module load mpich/mpich2-1.4.1
-
-cat $PBS_NODEFILE > hostfile.$PBS_JOBID.txt
-
-mpirun -hostfile hostfile.$PBS_JOBID.txt -ppn 1 ./hello-mpi
-```
+Ready-to-use job files are available on the template repositories as PBS files.
 
 Usage:
 
 ```sh
-$ qsub mpi-job.pbs
+$ qsub my-job.pbs
 ```
