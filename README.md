@@ -1,3 +1,5 @@
+# Do not run your program on the login node! Read further to see how to correctly execute your program. If you do not comply, administrators will be notified.
+
 # Kahuna Cluster
 
 ## Job scheduling introduction
@@ -28,6 +30,8 @@ That said, you can login with:
 ssh ra<your RA>@ssh.students.ic.unicamp.br
 ssh -YC <username>@kahuna.iqm.unicamp.br
 ```
+
+# Remember to change your password using `$ passwd`
 
 ## Sending files
 
