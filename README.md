@@ -6,7 +6,7 @@
 
 HPC clusters rely on job scheduling systems to fairly allocate resources to it's users. That said, to run your program, you must describe the resources that it will need and then send it to a queue to wait for execution.
 
-The overall process is pretty straight forwared:
+The overall process is pretty straight forward:
 
 1. Send your program to the cluster:
 
@@ -121,7 +121,7 @@ Used to show the status of batch jobs. Some usages:
 | qstat -B          | Summary information about PBS server    |
 | qstat -r          | List running jobs                       |
 | qstat -q          | List queues                             |
-| qstar -Q          | List queue limits                       |
+| qstat -Q          | List queue limits                       |
 
 ## Examples
 
