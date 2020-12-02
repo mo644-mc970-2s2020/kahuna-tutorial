@@ -35,7 +35,7 @@ ssh -YC <username>@kahuna.iqm.unicamp.br
 
 ## Sending files
 
-Tha Kahuna cluster has no internet access, meaning that you can not use git to pull your files there. You can use `rsync` or `scp` to copy files from your local computer to the cluster.
+You can use `rsync` or `scp` to copy files from your local computer to the cluster.
 
 For example, you can use the command bellow to send your files:
 
@@ -48,6 +48,8 @@ To retrieve them, simply use:
 ```sh
 rsync -razv --progress <username>@kahuna.iqm.unicamp.br:~/myfolder .
 ```
+
+Alternatively, you can use `git clone` after logging in on the cluster.
 
 ## Running jobs: Modules and PBSPro
 
