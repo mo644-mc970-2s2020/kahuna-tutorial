@@ -31,6 +31,33 @@ ssh ra<your RA>@ssh.students.ic.unicamp.br
 ssh -YC <username>@kahuna.iqm.unicamp.br
 ```
 
+### Opitional SSH configuration
+
+To automate the connection process, you can create a SSH configuration file in the path `~/.ssh/config` with the following content:
+
+```
+Host ic
+    User ra<your RA>
+    HostName ssh.students.ic.unicamp.br
+
+Host kahuna
+    User <your kahuna user>
+    Hostname kahuna.iqm.unicamp.br
+    ProxyCommand ssh -o 'ForwardAgent yes' ic 'ssh-add && nc %h %p'
+```
+
+Finally, for security reasons, you must make this file visible for your user only with `$ chmod 600 ~/.ssh/config`.
+
+With this configuration, you can establish a connection simply by running `$ ssh kahuna`.
+
+Additionally, you can use your public key to authenticate, avoid typing the password at each connection. To do so, generate your authentication keys with:
+
+`$ ssh-keygen`
+
+You can use the default options. Then, use `ssh-copy-id` to save your key on the remote computer:
+
+`$ ssh-copy-id kahuna`
+
 # Remember to change your password using `$ passwd`
 
 ## Sending files
