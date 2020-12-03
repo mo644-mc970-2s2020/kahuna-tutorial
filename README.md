@@ -43,7 +43,7 @@ Host ic
 Host kahuna
     User <your kahuna user>
     Hostname kahuna.iqm.unicamp.br
-    ProxyCommand ssh -o 'ForwardAgent yes' ic 'ssh-add && nc %h %p'
+    ProxyCommand ssh ic -W %h:%p
 ```
 
 Finally, for security reasons, you must make this file visible for your user only with `$ chmod 600 ~/.ssh/config`.
