@@ -161,3 +161,9 @@ Usage:
 ```sh
 $ qsub my-job.pbs
 ```
+
+If you want to **wait until your job finshes**, you can tell `qsub` to exit only after the execution ends:
+
+```sh
+$ qsub -Wblock=true my-job.pbs
+```
